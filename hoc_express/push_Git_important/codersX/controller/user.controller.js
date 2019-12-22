@@ -1,33 +1,11 @@
-//tích hợp lowdb - database cơ bản dùng json
-var express=require('express');
-var app=express();
-var port=3000;
+var db=require('../db');
 
-app.set('view engine', 'pug');//mặc định phải có
-app.set('views', './show');//views là mặc định; ./show chỉ định nơi chứa file pug
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json');
-const db = low(adapter);
-// Set some defaults (required if your JSON file is empty)
-db.defaults({ persons: []})
-  .write();
-
-app.get('/',function(req,res){
-    res.render('index',{ //index là tên file pug
-        name:'hoa'
-    });
-});
-
-app.get('/users',function(req,res){
+module.exports.index=function(req,res){
     res.render('nguoi/user',{
         persons:db.get('persons').value()
     });
-});
-app.get('/users/search',function(req,res){
+}
+module.exports.search=function(req,res){
     /*q tương ứng ở q sau dấu ? trong url của browser và q trong trường name 
     của thẻ input trong file user.pug,có thể thay bằng ký tự hoặc từ khác*/
     var a=req.query.q;
@@ -40,19 +18,18 @@ app.get('/users/search',function(req,res){
         question: a 
     });
     console.log(req.query);
-});
-app.get('/users/create',function(req,res){
+}
+module.exports.create=function(req,res){
     res.render('nguoi/createUser');
-});
-/**get('/users/:id' phải đặt ở dưới get('/users/create'. nếu không sẽ hiểu nhầm create là id và lỗi  */
-app.get('/users/:id',function(req,res){
-   var id=parseInt(req.params.id ) ;
-   var timUser=db.get('persons').find({id: id}).value();
-   res.render('nguoi/view',{
-       varUser:timUser
-   });
-});
-app.post('/users/create',function(req,res){
+}
+module.exports.viewInfoUser=function(req,res){
+    var id=parseInt(req.params.id ) ;
+    var timUser=db.get('persons').find({id: id}).value();
+    res.render('nguoi/view',{
+        varUser:timUser
+    });
+ }
+ module.exports.postCreate=function(req,res){
     var temp=req.body;//body này trả về object của client khi post
    //validation -xác thực thông tin người dùng nhập vào
    /**validate ở server là cái bắt buộc phải có, validate ở client có thì sẽ làm trải nghiệm
@@ -74,10 +51,6 @@ app.post('/users/create',function(req,res){
         return;
     }
     temp.id=db.get('persons').size()+1;
-    db.get('persons')
-  .push(temp).write();
+    db.get('persons').push(temp).write();
     res.redirect('/users');
-});
-app.listen(port,function(){
-    console.log('server is listening on port:',port);
-});
+}
