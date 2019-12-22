@@ -1,3 +1,5 @@
+
 {
-    "ignore":["db.json"]
+    "ignore":["db.json"],
+    "//":"chỉ định file được bỏ qua khi file này được sửa đổi và lưu lại khi dùng nodemon,vì .json ko có comment nên thêm dòng này vào"
 }
