@@ -1,0 +1,6 @@
+(function (exports,require,module,_filename,_filepath){
+    var sayHello=function(){
+        console.log("hello nodejs");
+    }
+    module.exports=sayHello;
+});

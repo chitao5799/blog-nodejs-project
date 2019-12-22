@@ -1,0 +1,22 @@
+extends ../common.pug
+
+block content
+    h1
+        span.mr-3 users
+        a.btn.btn-primary(href="/users/create") create
+    div.d-flex.align-items-center
+        form.ml-auto(action='/users/search',method='GET',class="d-flex")
+            input(type='text',name='q',value=question,class="form-control",placeholder="tìm kiếm user")
+            button(class="btn btn-primary ml-4") search
+    table.table
+        tr
+            th Name
+            th Phone
+            th Actions
+        each user in persons
+            //- li= "name:"+ user.name + "    điện thoại:"+user.đt
+            tr
+                td= user.name
+                td= user.đt
+                td
+                    a(href='/users/' + user.id) view
