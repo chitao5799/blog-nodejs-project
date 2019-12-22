@@ -13,12 +13,16 @@
     {
       "id": 3,
       "name": "hoàng văng K",
-      "đt": "37489029"
+      "đt": "37489029",
+      "email": "mot33@gmail.com",
+      "password": "33"
     },
     {
       "id": 4,
       "name": "phạm văn kd",
-      "đt": "102983"
+      "đt": "102983",
+      "email": "mot@gmail.com",
+      "password": "11"
     },
     {
       "name": "Nguyễn thị",
@@ -79,6 +83,11 @@
       "name": "Ngf",
       "đt": "0978",
       "id": 16
+    },
+    {
+      "name": "Nguyễn thị hồ",
+      "đt": "37489029",
+      "id": 17
     }
   ]
 }
