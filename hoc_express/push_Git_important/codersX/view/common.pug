@@ -14,6 +14,8 @@ html
                   a.nav-link(href='/') Home
                li.nav-item
                   a.nav-link(href='/users') Users
+         //-phải kiểm tra userLogined vì nó đc truyền từ trong file auth.middleware.js nên khi chưa đăng nhập thành công thì nó có giá trị undefined
+         p= !userLogined?'':userLogined.name
       .container.pt-5
          //-đây là file chung cho tất cả các file, 2 lệnh dưới tìm hiểu inheritant pug
          block content

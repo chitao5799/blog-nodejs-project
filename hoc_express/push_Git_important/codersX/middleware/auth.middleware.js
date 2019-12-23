@@ -8,17 +8,25 @@
 var db=require('../db');
 
 module.exports.requireAuthenticate=function(req,res,next){
-    if(!req.cookies.userID){
+    // console.log('cookie signed:',req.signedCookies,";cookie",req.cookies);
+    if(!req.signedCookies.userID){
         res.redirect('/auth/login');
         return;
     }
     // console.log(typeof req.cookies.userID); //kiểm tra, id trong database là number, id từ cookie là string
-    var parseIntID=parseInt(req.cookies.userID);
+    var parseIntID=parseInt(req.signedCookies.userID);//get cookie
+    
     var user=db.get('persons').find({id:parseIntID}).value();
     //if này để kiểm tra nhỡ đâu ai đó nhập vào id để thử hack
     if(!user){
         res.redirect('/auth/login');
         return;
     }
+    /*locals này chỉ tồn tại trong req/res trong một vòng đời của request tương ứng thôi,ko ảnh hưởng 
+    đến request khác của người dùng ko phải trong  phiên này*/
+    //userLogined sẽ sử dụng được ở tất cả các template trong view
+    res.locals.userLogined=user;
+  
     next();
+    
 }

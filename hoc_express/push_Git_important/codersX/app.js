@@ -12,7 +12,7 @@ app.set('views', './view');/*views là mặc định; ./view chỉ định nơi 
                 set này liên quan đến đường dẫn trong phương thức render()*/
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser());
+app.use(cookieParser('ksoiewjrlsdf234ri'));//truyền một chuỗi ngẫu nhiên để Signed Cookie
 
 app.get('/',authMiddleware.requireAuthenticate,function(req,res){
     res.render('index',{ //index là tên file pug

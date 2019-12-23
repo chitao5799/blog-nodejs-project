@@ -8,7 +8,7 @@ var server = net.createServer((socket) => {
   throw err;  
 });  
 // grab a random port.  
-server.listen(() => {  
+server.listen(() => {  //3000,
   address = server.address();  
   console.log('opened server on %j', address);  
 });  
