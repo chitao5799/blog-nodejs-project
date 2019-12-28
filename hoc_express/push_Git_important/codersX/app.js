@@ -1,4 +1,7 @@
 //tích hợp lowdb - database cơ bản dùng json
+// require('dotenv').config();
+// console.log(process.env.SESSION_SECRET);
+
 var express=require('express');
 var app=express();
 var port=3000;

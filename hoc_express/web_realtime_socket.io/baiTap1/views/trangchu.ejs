@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>
+            demo socket io
+        </title>
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        <script src='socket.io/socket.io.js'></script> <!-- đây là file js cho client của socket.io-->
+        <script>
+
+            var socket=io('http://localhost:3000');
+            socket.on('server-send-mau',function(data){
+                $('body').attr('bgcolor',data);
+            });
+            
+            $(document).ready(function(){
+              $('#do').click(function(){
+                    socket.emit('client-send-mau','red');
+              });
+              $('#xanh').click(function(){
+                    socket.emit('client-send-mau','blue');
+              });
+              $('#vang').click(function(){
+                    socket.emit('client-send-mau','yellow');
+              });
+            });
+        </script>
+        <style>
+            #do,#xanh,#vang{
+                width: 100px;
+                height: 100px;
+            }
+            #do{background-color: red;}
+            #xanh{background-color: royalblue;}
+            #vang{background-color: yellow;}
+        </style>
+    </head>
+    <body bgcolor=''>
+        <div id="do"></div>
+        <div id="xanh"></div>
+        <div id="vang"></div>
+    </body>
+</html>

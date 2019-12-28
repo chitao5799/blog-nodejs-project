@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            demo socket io
+        </title>
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        <script src='socket.io/socket.io.js'></script> <!-- đây là file js cho client của socket.io-->
+        <script>
+            //gọi điện lên server
+            var socket=io('http://localhost:3000');
+            socket.on('server-send-data',function(data){
+                $('#received').append(data+'<br/>');
+            });
+            
+            $(document).ready(function(){
+                // alert('hello');
+                $('#mrA').click(function(){
+                    socket.emit('Client-send-data','Hello');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="mrA">hello world</div>
+        <p id="received"></p>
+    </body>
+</html>
