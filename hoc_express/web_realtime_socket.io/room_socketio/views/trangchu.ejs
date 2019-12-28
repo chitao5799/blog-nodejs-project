@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            demo socket io
+        </title>
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        <script src='socket.io/socket.io.js'></script> <!-- đây là file js cho client của socket.io-->
+        <script src="xuly.js">  </script>
+        <link rel="stylesheet" href="layout.css">
+    </head>
+    <body>
+        <input type="text" id="txtRoom" />
+        <input type="button" value="Create Room Or Join Room" id="btnTaoRoom">
+        <h4 id="roomHienTai">...</h4>
+        <div id="wrapper">
+            <div id="left">
+                <h3>Rooms đang có</h3>
+                <div id="dsRoom"></div>
+            </div>
+            
+            <div id="right">
+                <input type="text" id="txtMessage" />
+                <input type="button" value="Chat" id="btnChat">
+            </div>
+        </div>
+    </body>
+</html>
