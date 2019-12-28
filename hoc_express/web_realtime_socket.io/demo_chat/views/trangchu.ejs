@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>
+            demo socket io
+        </title>
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        <script src='socket.io/socket.io.js'></script> <!-- đây là file js cho client của socket.io-->
+        <script src="xuly.js">  </script>
+        <link rel='stylesheet' type='text/css' href='layout.css'/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="loginform">
+                <h3>what's your name</h3>
+                <input type="text" id="txUername"/>
+                <input type="button" value="Register" id="btnResgiter">
+            </div>
+            <div id="chatform">
+                <div id="left">
+                    <div id="boxTitile">User Online</div>
+                    <div id="boxContent">
+                       
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="sayHi">
+                        Hello: <span id="currentUser">
+                            teo
+                        </span>
+                        <input type="button" id="btmLogout" value="Logout">
+                    </div>
+                    <div id="listMessage">                    </div>
+                    <div id="thongbao"></div>
+                    <input type="text" id="txtMessage" />
+                    <input type="button" id="btnSendMessage" value="Send">
+                </div>
+            </div>
+        </div>
+       
+    </body>
+</html>
