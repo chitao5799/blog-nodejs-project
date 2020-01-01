@@ -1,0 +1,11 @@
+#wrapper{
+    width: 520px;margin: auto;
+}
+#information{
+    border:solid 1px gray; margin: 10px;
+}
+#txtHoten,#txtEmail,#txtSoDt {}
+#btnRegister{float:right;}
+#listUsers{text-align: center;}
+.hocvien{border-bottom: solid 1px #eaeff7; padding: 10px;}
+.hang1,.hang2{color: blue;font-weight: bold;}

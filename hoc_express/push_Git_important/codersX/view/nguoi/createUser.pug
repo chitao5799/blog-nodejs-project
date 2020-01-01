@@ -5,7 +5,7 @@ block content
         if errors
             each error in  errors
                 .alert.alert-danger=error
-        form(action="/users/create", method="post",style="width:400px")
+        form(action="/users/create", method="post",style="width:400px", enctype="multipart/form-data")
             .form-group
                 label(for="dienTen", style="font-size:16px") Name:
                 //-"name" là trường sẽ được client sẽ gửi đi cho server như là key
@@ -15,5 +15,9 @@ block content
             .form-group
                 label(for="dienPone", style="font-size:16px") phone:
                 input(type="text" name="đt",class="form-control",id="dienPone",value=value_Da_Nhap?value_Da_Nhap.đt:'')
+            //- upload file, thẻ form phải có thuộc tính enctype để client gửi dữ liệu khác text về server đc
+            .form-group
+                label(for="avatar", style="font-size:16px") Avatar:
+                input(type="file" name="avatar",class="form-control-file",id="avatar")
             button(class="btn btn-primary") create
     a(href="/users") view all user

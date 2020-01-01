@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+        <!-- thêm tên trang web trước /socket.io/  để safari chạy đc -->
+        <script src='https://appnct99.herokuapp.com/socket.io/socket.io.js'></script> <!-- đây là file js cho client của socket.io-->
+        <script src="xuly.js">  </script>
+        <link rel='stylesheet' type='text/css' href='layout.css'/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="information">
+                <input type="text" id="txtHoten" placeholder="Họ Tên" />
+                <input type="text" id="txtEmail" placeholder="Email" />
+                <input type="text" id="txtSoDt" placeholder="Điện Thoại" />
+                <input type="button" id="btnRegister" value="Send">
+            </div>
+            <div id="listUsers">
+                <h3>Danh Sách listUsers</h3>
+                <div id="ds">
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

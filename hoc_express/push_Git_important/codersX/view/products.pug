@@ -1,0 +1,32 @@
+extends ./common.pug
+
+block products 
+    h1
+        span.mr-3 PRODUCTS
+    div.d-flex.align-items-center
+        form.ml-auto(action='/products',method='GET',class="d-flex")
+            input(type='text',name='page',class="form-control",placeholder="tìm kiếm products")
+            button(class="btn btn-primary ml-4") search
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            li(class="page-item")
+                a(class="page-link" href="#")=soTruoc
+            li(class="page-item active")
+                a(class="page-link" href="#")=soHienTai 
+                    span(class="sr-only") (current)
+            li(class="page-item")
+                a(class="page-link" href="#")=soSau
+            <li class="page-item">
+                <a class="page-link" href="" name='tiep'>Next</a>
+            </li>
+        </ul>
+    </nav>
+    div(class="wraperr-pd", style="margin:0 auto;width:100%;margin-left:20px")
+        each pd in products
+            div(class='pd',style='width:300px;border:1px solid black;float:left;margin-right: 15px;height: 350px;margin-bottom: 15px;')
+                img(src=pd.image, alt="mèo",style='width:298px')
+                h5(style='font-size:20px;text-align:center;')=pd.name
+                p(style="padding-left: 12px;")=pd.description

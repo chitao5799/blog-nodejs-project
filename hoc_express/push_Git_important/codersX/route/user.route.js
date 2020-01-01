@@ -1,8 +1,11 @@
 //Express Router
 var express=require('express');
+var multer  = require('multer');
+
 var validation=require('../validation/user.postData.validate');
 var controller=require('../controller/user.controller.js');
 var router=express.Router();
+var upload = multer({ dest: './uploads/' })
 // var authMiddleware=require('../middleware/auth.middleware');
 
 //file này liên quan đến đường dẫn khi người dùng nhập bắt đầu bằng /users
@@ -26,7 +29,7 @@ router.get('/cookie',function(req,res){
 router.get('/create',controller.create);
 /**get('/users/:id' phải đặt ở dưới get('/users/create'. nếu không sẽ hiểu nhầm create là id và lỗi  */
 router.get('/:id',controller.viewInfoUser);
-router.post('/create',validation.validate,controller.postCreate);/*khi client nhập đường dẫn này thì vào validate
+router.post('/create',upload.single('avatar'),validation.validate,controller.postCreate);/*khi client nhập đường dẫn này thì vào validate
                             trước nếu thỏa mãn sẽ gọi hàm next, nếu next() được gọi sẽ vào hàm postCreate */
 
 module.exports=router;

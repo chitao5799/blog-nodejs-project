@@ -9,6 +9,7 @@ var cookieParser=require('cookie-parser');
 var userRoute=require('./route/user.route.js');
 var authRoute=require('./route/authentication.route');
 var authMiddleware=require('./middleware/auth.middleware');
+var productRoute=require('./route/productRoute');
 
 app.set('view engine', 'pug');//mặc định phải có
 app.set('views', './view');/*views là mặc định; ./view chỉ định nơi chứa file pug,
@@ -16,6 +17,7 @@ app.set('views', './view');/*views là mặc định; ./view chỉ định nơi 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser('ksoiewjrlsdf234ri'));//truyền một chuỗi ngẫu nhiên để Signed Cookie
+app.use(express.static(__dirname+"/uploads"))
 
 app.get('/',authMiddleware.requireAuthenticate,function(req,res){
     res.render('index',{ //index là tên file pug
@@ -25,6 +27,8 @@ app.get('/',authMiddleware.requireAuthenticate,function(req,res){
 
 app.use('/users',authMiddleware.requireAuthenticate,userRoute);
 app.use('/auth',authRoute);
+
+app.use('/products',productRoute);
 app.listen(port,function(){
     console.log('server is listening on port:',port);
 });

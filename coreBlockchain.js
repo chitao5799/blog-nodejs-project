@@ -1,3 +1,4 @@
+
 const SHA256 = require('crypto-js/sha256')
 var prettyjson = require('prettyjson')
 const EC = require('elliptic').ec

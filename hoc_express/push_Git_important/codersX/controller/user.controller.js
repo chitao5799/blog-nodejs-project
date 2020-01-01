@@ -31,9 +31,11 @@ module.exports.viewInfoUser=function(req,res){
         varUser:timUser
     });
  }
- module.exports.postCreate=function(req,res){
+ module.exports.postCreate=function(req,res){ 
+    //.path lấy đường dẫn file đc lưu trên server khi client upload
+    //vì app.js đã use() forder uploads và bên trong chứa file nên avatar chỉ cần lưu tên file
+    req.body.avatar=req.file.path.split('\\').slice(1);//.join('/');   
     var temp=req.body;//body này trả về object của client khi post
-   
     temp.id=db.get('persons').size()+1;
     db.get('persons').push(temp).write();
     res.redirect('/users');
