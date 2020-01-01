@@ -25,5 +25,5 @@ function HocVien(hoten,email,sodt){
 }
 
 app.get('/',function(req,res){
-    res.render('trangchu');
+    res.render('trangchu.ejs');
 });
