@@ -12,7 +12,11 @@ var authMiddleware=require('./middleware/auth.middleware');
 var productRoute=require('./route/productRoute');
 
 app.set('view engine', 'pug');//mặc định phải có
+<<<<<<< HEAD
 app.set('views',__dirname+ '/view');/*views là mặc định; ./view chỉ định nơi chứa file pug,
+=======
+app.set('views',__dirname+ './view');/*views là mặc định; ./view chỉ định nơi chứa file pug,
+>>>>>>> b9af4f4b2358f72618330110ea1fd9aa5e1b9f92
                 set này liên quan đến đường dẫn trong phương thức render()*/
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
