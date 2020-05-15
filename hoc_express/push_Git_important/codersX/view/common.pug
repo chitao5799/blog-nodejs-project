@@ -3,7 +3,7 @@ html
       link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous")
    body
       nav.navbar.navbar-expand-lg.navbar-light.bg-light
-         a.navbar-brand(href="#") MyLogo
+         a.navbar-brand(href='/') MyLogo
          button.navbar-toggler(type='button',data-toggle='collapse',
          data-target='#navbarNav',aria-controls='navbarNav',
          aria-expanded='fasle',aria-label='Toggle navigation')
@@ -14,6 +14,11 @@ html
                   a.nav-link(href='/') Home
                li.nav-item
                   a.nav-link(href='/users') Users
+               li.nav-item
+                  a.nav-link(href='/products') Products
+               li.nav-item
+                  a.nav-link(href='/cart')  Cart(#{quantityProInCart})
+                  //- Cart 
          //-phải kiểm tra userLogined vì nó đc truyền từ trong file auth.middleware.js nên khi chưa đăng nhập thành công thì nó có giá trị undefined
          p= !userLogined?'':userLogined.name
       .container.pt-5

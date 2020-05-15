@@ -9,24 +9,35 @@ block products
             button(class="btn btn-primary ml-4") search
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            <li class="page-item ">
+                a(class="page-link" href='/products?page=' + soTruoc) Previous
             </li>
             li(class="page-item")
-                a(class="page-link" href="#")=soTruoc
+                a(class="page-link" href='/products?page=' + soTruoc)=soTruoc
             li(class="page-item active")
-                a(class="page-link" href="#")=soHienTai 
+                a(class="page-link" href='/products?page=' + soHienTai)=soHienTai 
                     span(class="sr-only") (current)
             li(class="page-item")
-                a(class="page-link" href="#")=soSau
+                a(class="page-link" href='/products?page=' + soSau)=soSau
             <li class="page-item">
-                <a class="page-link" href="" name='tiep'>Next</a>
+                a(class="page-link" name='tiep' href='/products?page=' + soSau) Next
             </li>
         </ul>
     </nav>
-    div(class="wraperr-pd", style="margin:0 auto;width:100%;margin-left:20px")
-        each pd in products
-            div(class='pd',style='width:300px;border:1px solid black;float:left;margin-right: 15px;height: 350px;margin-bottom: 15px;')
-                img(src=pd.image, alt="mèo",style='width:298px')
-                h5(style='font-size:20px;text-align:center;')=pd.name
-                p(style="padding-left: 12px;")=pd.description
+    div(class="wraperr-pd", style="margin:0 auto;width:100%;")
+        .container
+            .row              
+                each pd in products
+                    .col-xs-6.col-md-4
+                        div(class="card ",style="width: 18rem;margin-bottom:20px;")
+                            img(class="card-img-top", src=pd.image, alt="Card image cap")
+                            div(class="card-body")
+                                h5(class="card-title")=pd.name
+                                p(class="card-text")=pd.description
+                                a(href="/cart/add/" + pd.id, class="btn btn-primary") Add to cart
+            //- div(class='pd',style='width:300px;border:1px solid black;float:left;margin-right: 15px;height: 350px;margin-bottom: 15px;')
+            //-     img(src=pd.image, alt="mèo",style='width:298px')
+            //-     h5(style='font-size:20px;text-align:center;')=pd.name
+            //-     p(style="padding-left: 12px;")=pd.description
+            //-     a(type="button" class="btn btn-primary" href="") add to cart
+            

@@ -1,0 +1,16 @@
+extends ./common.pug
+
+block content
+    table(class="table table-striped")
+        thead
+                tr
+                    th(scope="col") ảnh
+                    th(scope="col") tên sản phẩm
+                    th(scope="col") số lượng
+        tbody
+            each pd in prosInCart
+                tr
+                    td(class="aaa")
+                        img(src=pd.img, style="width:50px;")
+                    td(class="aaa")=pd.name
+                    td(class="aaa")=pd.quantity
