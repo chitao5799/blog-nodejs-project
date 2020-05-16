@@ -1,8 +1,12 @@
 var db = require('../db');
 module.exports = function(req, res, next) {
+    var sessionId = req.signedCookies.sessionId;
     var quantityProInCart = 0;
     var carts = db.get('session').value();
-    var cart = carts[0].cart;
+    var cart = db.get('session')
+        .find({ id: sessionId })
+        .get('cart')
+        .value();
     for (var key in cart) {
         quantityProInCart += parseInt(cart[key]);
     }

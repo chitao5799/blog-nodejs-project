@@ -1,0 +1,18 @@
+interface là giao tiếp giữa cái gì đó với cái gì đó
++) cli - command line interface  
+interface là cái giao tiếp giữa người dùng và app, tức là app cung cấp cho người dùng mấy cái dòng lệnh mà 
+người dùng chỉ biết dùng nó mà ko biết bên trong nó thực thi như nào, dùng dòng lệnh này sẽ ra kết quả như vậy.
++) api - application programming  interface
+là giao tiếp giữa ứng dụng và ứng dụng
++)http-api : cung cấp cho một số ứng dụng khác cái endpoint, endpoint này trả về dữ liệu, http-api trả về 2 dạng 
+chính là xml và json
+
+=========== REST API ===
+là 1 quy chuẩn chứ ko phải là thư viện hay framework
+             Resource
+GET         /products               -> get all products []  //có thể có query string
+GET         /products/:id           -> get one product {}
+POST        /products               -> create product
+PUT         /products/:id           ->replace / create product
+PATCH       /products/:id           -> update product
+DELETE      /products/:id           ->delete a product

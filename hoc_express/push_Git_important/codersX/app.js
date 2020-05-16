@@ -3,11 +3,14 @@
 //tích hợp lowdb - database cơ bản dùng json
 // require('dotenv').config();
 // console.log(process.env.SESSION_SECRET);
-
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var port = 3000;
 var cookieParser = require('cookie-parser');
+
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL);
 var userRoute = require('./route/user.route.js');
 var authRoute = require('./route/authentication.route');
 var authMiddleware = require('./middleware/auth.middleware');
@@ -16,6 +19,8 @@ var sessionMiddleware = require('./middleware/session.middlewae');
 var db = require('./db');
 var cartRoute = require('./route/cart.route');
 var quantityProInCart = require('./middleware/showNumberProInCart');
+var apiProductRoute = require('./api/route/product.route');
+
 app.set('view engine', 'pug'); //mặc định phải có
 app.set('views', __dirname + '/view');
 /*views là mặc định; ./view chỉ định nơi chứa file pug,
@@ -30,6 +35,7 @@ app.use(sessionMiddleware);
                         của app thì đều chạy function middleware này*/
 app.use('/cart', cartRoute);
 app.use(quantityProInCart);
+
 app.get('/', authMiddleware.requireAuthenticate, function(req, res) {
     var parseIntID = parseInt(req.signedCookies.userID); //get cookie
     var user = db.get('persons').find({ id: parseIntID }).value().name;
@@ -40,8 +46,8 @@ app.get('/', authMiddleware.requireAuthenticate, function(req, res) {
 
 app.use('/users', authMiddleware.requireAuthenticate, userRoute);
 app.use('/auth', authRoute);
-
 app.use('/products', productRoute);
+app.use('/api/products', apiProductRoute);
 app.listen(port, function() {
     console.log('server is listening on port:', port);
 });
